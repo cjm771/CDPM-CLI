@@ -18,19 +18,22 @@ First step is creating a CLI tool for developers.
 Current features supported.
 
 ``` sh
-cdpm dyn-py-ls <file>                                        Lists all the python nodes in file and their pack, enabled status
-cdpm dyn-find-nodeId <file> <nodeId>                         Find node by node id. ex: `9d5edce5bbad41ff96a0dca1b9bdd8de`
-cdpm dyn-find-nodeTypes <file> <nodeType>                    Find node by type. ex: `PythonScriptNode`
+cdpm dyn-py-ls <file>                       Lists all the python nodes in file and their pack, enabled status
+cdpm dyn-find-nodeId <file> <nodeId>        Find node by node id. ex: `9d5edce5bbad41ff96a0dca1b9bdd8de`
+cdpm dyn-find-nodeTypes <file> <nodeType>   Find node by type. ex: `PythonScriptNode`
 ```
 
 ### 0.1.1. dyn-py-ls
 
-Currently we can list our dynamo python nodes for quickly checking unbundling/bundling status.
+List our dynamo python nodes for quickly checking unbundling/bundling status + other userful information.
 
- Generally we can use dynamo as a means to access the API via python. The problem occurs during deployment, as we want to share our *.dyn file but during development we want to use an IDE/Code Editor of choicem, having our .py file in an external file. The goal here is to *unpack (unbundle)* scripts when we want to edit it (developer mode), and *pack (bundle)*  for distribution.
+ Generally for tool making, we use dynamo as a means to access the API via python. The problem occurs during deployment, as we want to share our *.dyn file but during development we want to use an IDE/Code Editor of choice, having our .py file in an external file. The goal here is to **unpack (unbundle)** scripts when we want to edit it (developer mode), and **pack (bundle)**  for distribution.
 
-*0.1.1.1. _pyDynBundler.dyn*
+**180917_pyDynBundler.dyn**
+
 ![Typical Py Dyn Setup](https://i.imgur.com/vbA5Rir.png)
+
+**example of dyn-py-ls**
 
 ``` sh
 
