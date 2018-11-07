@@ -151,19 +151,19 @@ program.on('--help', function () {
   Object.keys(commands).forEach(cmdGroupName => {
     const cmdGroupObj = commands[cmdGroupName];
     console.log('');
-    console.log('In depth info'.logColorize(['BgRed']));
-    console.log('========================'.logColorize(['FgRed']));
+    console.log('In depth info'.logColorize('BgRed'));
+    console.log('========================'.logColorize('FgRed'));
 
     console.log('');
-    console.log(`${cmdGroupObj.description}`.logColorize(['FgCyan']));
-    console.log(`-----------------------`.logColorize(['FgCyan']));
+    console.log(`${cmdGroupObj.description}`.logColorize('FgCyan'));
+    console.log(`-----------------------`.logColorize('FgCyan'));
     console.log('');
     Object.keys(cmdGroupObj.subCommands).forEach(subcommandName => {
       const { args, longName, description } = cmdGroupObj.subCommands[subcommandName];
       console.log(`${
         (CMD_NAME + ' ' +
           (cmdGroupName + '-' +
-            subcommandName).logColorize(['FgGreen']) + ' ' +
+            subcommandName).logColorize('FgGreen') + ' ' +
           (args || '')).fixedLength(60)} ${description.logColorize('FgGrey')}`);
     });
     console.log('');
