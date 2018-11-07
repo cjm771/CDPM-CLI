@@ -47,6 +47,28 @@ $>  cdpm dyn-py-ls .\180917_pyDynBundler.dyn
 ```
 
 This will result in:
+``` sh
+# Note: any invalid python nodes, simply mean we can't figure out how to pack/unpack it.
+# This is usually because it doesn't meet minimum requirements:
+# 
+#     - Minimum of two inputs
+#         - input #1: boolean value (represents enabled toggle)
+#         - input #2: filepath browser (represents file path, sorry no strings)
+# 
+# Another Note: We assume if the #[PACKED] or #[UNPACKED] flag isn't at the top of the script,
+#  then we assumed its all packed up. If this isn't the case put this comment flag at the top of your code.
+
+
+id    name                                          script_path         on?        pack_status
+===== ============================================= ================    ========== ===================================
+0     5c29cb63f8a946a89765c9727e84f44d              -                   -          Invalid
+1     180523_add_occ_tags_up.dynamo.py              X:\Not Backed..     no         Unpacked
+2     e766121723484467b625d1bc75a2c515              -                   -          Invalid
+3     helloWorld.py                                 scripts\hello..     yes        Packed
+4     3503080ed24646b2a10a2cecaf3778dc              -                   -          Invalid
+5     path.py                                       ..\..\..\..\..      yes        ? (Assuming Packed)
+```
+Thr console would be color coded like so
 
 ![dyn-py-ls console output](https://i.imgur.com/2fr4tszg.png)
 
