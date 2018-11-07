@@ -93,7 +93,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = 0",
+      "Code": "#[UNPACKED]\r\n# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = 0",
       "VariableInputPorts": true,
       "Id": "ca4f8e0c2c4a4ddd9bea5ce9095da85b",
       "Inputs": [
@@ -129,6 +129,289 @@
       ],
       "Replication": "Disabled",
       "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "#[PACKED]\r\n# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nif IN[0]:\r\n\tOUT = 'hello world'",
+      "VariableInputPorts": true,
+      "Id": "e766121723484467b625d1bc75a2c515",
+      "Inputs": [
+        {
+          "Id": "de4c9028f6264e1da9567ad5f7054c13",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2385142c885c4d48800a19c2aa57de73",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5034bc6413c842a68b7da329c20cb82d",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "40567502428b48cc9b5285f8709dcbb5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d2c361ac72a24949a2e483e78da42426",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "#[PACKED]\r\n# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nif IN[0]:\r\n\tOUT = 'hello world'",
+      "VariableInputPorts": true,
+      "Id": "ae193021102f40f88eb580f03ad1bc22",
+      "Inputs": [
+        {
+          "Id": "f14c5225374f4d7f82b45126a4178a98",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b158475a924e46aca3b02bbca03dc12a",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "86b0bd60ee6f4b35a41c2e10c748edd6",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "bf7a1ad4a28a4dba8cdff14df028d153",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b5d55d2a9fbc4e428288c3655e10855e",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\cmalcolm\\Dropbox\\NBBJ\\SCRIPTS\\BPM\\pyDynBundler\\scripts\\helloWorld.py",
+      "InputValue": "scripts\\helloWorld.py",
+      "NodeType": "ExtensionNode",
+      "Id": "601cc326f7eb461cbf26cefe4005fd6a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a7f592e8878d4c099bb23e9b37130cec",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "#[PACKED]\r\n# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nif IN[0]:\r\n\tOUT = 'hello world'",
+      "VariableInputPorts": true,
+      "Id": "3503080ed24646b2a10a2cecaf3778dc",
+      "Inputs": [
+        {
+          "Id": "adb175bccbd241dba1d8ec1232a0f188",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3f65c1e6c774a36960c56334b38262d",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "29d93e075968432c8c58ffe9aa5c4de6",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\cmalcolm\\Dropbox\\NBBJ\\SCRIPTS\\BPM\\pyDynBundler\\scripts\\helloWorld.py",
+      "InputValue": "scripts\\helloWorld.py",
+      "NodeType": "ExtensionNode",
+      "Id": "b6554287346e4b69abcb4f7bb1ba8017",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "48069a9ef73b4085824ff06321a3225e",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = 0",
+      "VariableInputPorts": true,
+      "Id": "66912d5e1b6c4793b360f9dd7309e62b",
+      "Inputs": [
+        {
+          "Id": "348e64fdcfbb428faaf5a5a6f5d41dc3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a0e0636d587640739f9d47c8d80a8250",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c0157e5ccdb4cf5997538f036d44510",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "0a64d89626b74d4a9b3d4bafb19c225a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "180224cb776e4e4c98bf38804716d176",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\cmalcolm\\Documents\\directory_no_exists\\path.py",
+      "InputValue": "..\\..\\..\\..\\..\\Documents\\directory_no_exists\\path.py",
+      "NodeType": "ExtensionNode",
+      "Id": "8094529348024a8e84ff3f06e03c92e3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f8cc0c04cbe24e7fb5bd0d24e6220ac0",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
     }
   ],
   "Connectors": [
@@ -141,6 +424,36 @@
       "Start": "a9d2ea5b5b67412891476a250505f351",
       "End": "9dda02ef14f2417eaa2c7dc1a89c9874",
       "Id": "b23259657a7e4cea9c078a076bb97367"
+    },
+    {
+      "Start": "d2c361ac72a24949a2e483e78da42426",
+      "End": "de4c9028f6264e1da9567ad5f7054c13",
+      "Id": "98d60c2753234797b583bc5a87397314"
+    },
+    {
+      "Start": "b5d55d2a9fbc4e428288c3655e10855e",
+      "End": "f14c5225374f4d7f82b45126a4178a98",
+      "Id": "52be21c663fa40ee84870d12e337cc38"
+    },
+    {
+      "Start": "a7f592e8878d4c099bb23e9b37130cec",
+      "End": "b158475a924e46aca3b02bbca03dc12a",
+      "Id": "7716c487e1064b4982dbf7b7fc64afbc"
+    },
+    {
+      "Start": "48069a9ef73b4085824ff06321a3225e",
+      "End": "c3f65c1e6c774a36960c56334b38262d",
+      "Id": "77646d043bad40f482956769e86f7037"
+    },
+    {
+      "Start": "180224cb776e4e4c98bf38804716d176",
+      "End": "348e64fdcfbb428faaf5a5a6f5d41dc3",
+      "Id": "396d4d2122c04ace8e4eb0bbff693833"
+    },
+    {
+      "Start": "f8cc0c04cbe24e7fb5bd0d24e6220ac0",
+      "End": "a0e0636d587640739f9d47c8d80a8250",
+      "Id": "fcb25c396f434bd7b326e99fab1bcc56"
     }
   ],
   "Dependencies": [],
@@ -156,12 +469,12 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
+      "EyeX": -20.052800000000005,
+      "EyeY": 27.307200000000005,
+      "EyeZ": 64.755200000000016,
+      "LookX": 15.052800000000005,
+      "LookY": -16.307200000000005,
+      "LookZ": -72.755200000000016,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0
@@ -174,8 +487,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -66.860961438420759,
-        "Y": 369.12610814056853
+        "X": 707.83895579916987,
+        "Y": 184.41175985221054
       },
       {
         "ShowGeometry": true,
@@ -184,8 +497,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 138.32549210959189,
-        "Y": 290.39245717152005
+        "X": 904.6790153287609,
+        "Y": 110.10974440010028
       },
       {
         "ShowGeometry": true,
@@ -194,8 +507,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 380.55486401093486,
-        "Y": 471.47176412943179
+        "X": 369.79528081981363,
+        "Y": 376.88112182250688
       },
       {
         "ShowGeometry": true,
@@ -204,13 +517,188 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 377.80007476637849,
-        "Y": 273.98546237455207
+        "X": 1136.4053102467481,
+        "Y": 112.33592898851714
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "e766121723484467b625d1bc75a2c515",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 372.48558020139956,
+        "Y": 220.03548405215355
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "40567502428b48cc9b5285f8709dcbb5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 175.3959419827886,
+        "Y": 222.01174991057121
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "ae193021102f40f88eb580f03ad1bc22",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1130.2425595790455,
+        "Y": -201.5715400050307
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "bf7a1ad4a28a4dba8cdff14df028d153",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 931.71602965889258,
+        "Y": -213.96419116203978
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "601cc326f7eb461cbf26cefe4005fd6a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 923.69932442263291,
+        "Y": -133.0910081754034
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "3503080ed24646b2a10a2cecaf3778dc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 358.15914976416047,
+        "Y": 32.2347936828217
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "b6554287346e4b69abcb4f7bb1ba8017",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 132.51562984483689,
+        "Y": 69.677362772717743
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "66912d5e1b6c4793b360f9dd7309e62b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1135.7449953014489,
+        "Y": 470.0890713027801
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "0a64d89626b74d4a9b3d4bafb19c225a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 939.86640341580869,
+        "Y": 446.84871597126312
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "8094529348024a8e84ff3f06e03c92e3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 807.8602520570995,
+        "Y": 569.49227347907163
       }
     ],
-    "Annotations": [],
-    "X": -63.937158732379146,
-    "Y": -40.152322904914911,
-    "Zoom": 0.97722060134152788
+    "Annotations": [
+      {
+        "Id": "77bd5e2a5ecd4f9f867ae2f5c8c59c10",
+        "Title": "all good, packed, and enabled",
+        "Nodes": [
+          "ae193021102f40f88eb580f03ad1bc22",
+          "bf7a1ad4a28a4dba8cdff14df028d153",
+          "601cc326f7eb461cbf26cefe4005fd6a"
+        ],
+        "Left": 913.69932442263291,
+        "Top": -309.96419116203981,
+        "Width": 350.54323515641261,
+        "Height": 270.87318298663638,
+        "FontSize": 36.0,
+        "InitialTop": -213.96419116203978,
+        "InitialHeight": 204.87318298663638,
+        "TextblockHeight": 86.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "0e245171e3aa4483aa858ae6f007db2d",
+        "Title": "All good, not enabled",
+        "Nodes": [
+          "105b338b71cc475a846a78de7bd6c833",
+          "9d5edce5bbad41ff96a0dca1b9bdd8de",
+          "ca4f8e0c2c4a4ddd9bea5ce9095da85b"
+        ],
+        "Left": 697.83895579916987,
+        "Top": 57.109744400100283,
+        "Width": 572.56635444757819,
+        "Height": 221.30201545211025,
+        "FontSize": 36.0,
+        "InitialTop": 110.10974440010028,
+        "InitialHeight": 198.30201545211025,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "85148525d9b8450fbc225b0ea30f7ac7",
+        "Title": "variety of invalid python nodes in our case",
+        "Nodes": [
+          "5c29cb63f8a946a89765c9727e84f44d",
+          "e766121723484467b625d1bc75a2c515",
+          "40567502428b48cc9b5285f8709dcbb5",
+          "3503080ed24646b2a10a2cecaf3778dc",
+          "b6554287346e4b69abcb4f7bb1ba8017"
+        ],
+        "Left": 122.51562984483689,
+        "Top": -63.7652063171783,
+        "Width": 383.96995035656266,
+        "Height": 559.64632813968524,
+        "FontSize": 36.0,
+        "InitialTop": 32.2347936828217,
+        "InitialHeight": 493.64632813968518,
+        "TextblockHeight": 86.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "1e74cf9cb9b14f52af008d4ed2ce72f7",
+        "Title": "all good, but non existing path",
+        "Nodes": [
+          "66912d5e1b6c4793b360f9dd7309e62b",
+          "0a64d89626b74d4a9b3d4bafb19c225a",
+          "8094529348024a8e84ff3f06e03c92e3"
+        ],
+        "Left": 797.8602520570995,
+        "Top": 350.84871597126312,
+        "Width": 471.88474324434935,
+        "Height": 312.64355750780851,
+        "FontSize": 36.0,
+        "InitialTop": 446.84871597126312,
+        "InitialHeight": 246.64355750780851,
+        "TextblockHeight": 86.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -285.280137838927,
+    "Y": 302.22292877793615,
+    "Zoom": 1.0251650482831711
   }
 }

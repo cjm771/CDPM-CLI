@@ -1,16 +1,19 @@
 #!/usr/bin/env node
-const dynReader = require('./lib/dynReader.js');
 const cliUtils = require('./lib/cliUtils.js');
+const dynReader = require('./lib/dynReader.js');
+const pyDynUtils = require('./lib/pyDynUtils.js');
 const program = require('commander');
 const CMD_NAME = 'cdpm';
-
-// String.prototype.logColorize = function () {
-
-// }
 
 //prototypeExtenders
 cliUtils.stringFixedLength();
 cliUtils.stringLogColorize();
+
+
+const PACK_COLORS = {};
+['FgGreen', 'FgCyan', 'FgYellow', 'FgRed'].forEach((color, index) => {
+  PACK_COLORS[color] = pyDynUtils.PACK_STATUS[Object.keys(pyDynUtils.PACK_STATUS)[index]];
+});
 
 const commands = {
   dyn: {
@@ -26,8 +29,8 @@ const commands = {
         longName: 'list-python-nodes',
         description: 'Lists all the python nodes in file and their status',
         routine: function (file) {
-          return dynReader.load(file)
-            .then(() => {
+          return pyDynUtils.getDynPyNodeStatus(file).then((pythonNodes) => {
+          
               // grab nodes
               // check amount of inputs should be 2. first should be a boolean, and second should be file path
               const invalidNote = 'Note: any invalid python nodes, simply mean we can\'t figure out how to pack/unpack it. ' +
@@ -35,58 +38,26 @@ const commands = {
                 '\n' +
                 '\n    - Minimum of two inputs' +
                 '\n        - input #1: boolean value (represents enabled toggle)' +
-                '\n        - input #2: string value (represents file path)' +
+                '\n        - input #2: filepath browser (represents file path, sorry no strings)' +
                 '\n';
               const packedNote = 'Another Note: We assume if the #[PACKED] or #[UNPACKED] flag isn\'t at the top of the script,' +
-                '\n then we assumed its all packed up. If this isn\'t the case put this comment flag at the top of your code.'
+                '\n then we assumed its all packed up. If this isn\'t the case put this comment flag at the top of your code.';
 
-              const pythonNodes = dynReader.getNodesByType('PythonScriptNode').map((node) => {
-                // dynReader.visualizeNode(node);
-
-                let name, path, active, status = '';
-                if (node.Inputs.length < 2 ||
-                  typeof node.Inputs[0].InputValue !== 'boolean' ||
-                  typeof node.Inputs[1].InputValue !== 'string') {
-                  status = 'Invalid'.logColorize('FgRed');
-                } else {
-                  // if not status is invalid inputs
-                  // else assume packed (if no flag..) first thing in file should be #[PACKED] or #[UNPACKED] 
-                  const code = node.Code.trim();
-                  if (code.indexOf('#[UNPACKED]') === 0) {
-                    status = 'Unpacked'.logColorize('FgCyan');;
-                  } else if (code.indexOf('#[PACKED]') === 0) {
-                    status = 'Packed'.logColorize('FgGreen');
-                  } else {
-                    status = '? (Assuming Packed)'.logColorize('FgYellow');;
-                  }
-                }
-
-                // spit out external path + name..(id if no path name)
-                debugger;
-                if (!!~status.indexOf('Invalid')) {
-                  active = '-';
-                  path = '-';
-                  name = node.Id;
-                } else {
-                  active = node.Inputs[0].InputValue;
-                  active = (active) ? String(active).logColorize('FgGreen') : String(active).logColorize('FgRed');
-                  path = node.Inputs[1].InputValue;
-                  name = path.split(/\\|\//).pop();
-                }
-                return [name, path, active, status];
-              });
               // notes
-              console.log(['', invalidNote, packedNote, '', ''].join('\n').logColorize('FgMagenta'));
+              console.log(['', invalidNote, packedNote, '', ''].join('\n').logColorize('FgGrey'));
               
               // define table widths
               const tableWidths  = [5, 45, 85, 10, 35];
               // headers
-              console.log(cliUtils.tableRowCreate(['id', 'name', 'script_path', 'on?', 'pack_status'], tableWidths));
-              console.log(cliUtils.tableRowCreate(['','', '', '', ''], tableWidths, '='));
+              console.log(cliUtils.tableRowCreate(['id', 'name', 'script_path', 'on?', 'pack_status'].map((text) => (text.logColorize('FgMagenta'))), tableWidths));
+              console.log(cliUtils.tableRowCreate(['','', '', '', ''], tableWidths, '=').logColorize('FgMagenta'));
               // nodes
-              pythonNodes.forEach(([name, path, active, status], index) => {
+
+              pythonNodes.forEach(([name, path, active, status, pathExists], index) => {
+                // colorize based on existing-ness
+                path = (pathExists) ? path.logColorize('FgGreen') : path.logColorize('FgRed') ;
                 const isOn = ((active === '-') ? '-'.logColorize('FgRed') : (active === true) ? 'yes'.logColorize('FgGreen') : 'no'.logColorize('FgRed'));
-                console.log(cliUtils.tableRowCreate([String(index), name, path, isOn, status], tableWidths));
+                console.log(cliUtils.tableRowCreate([String(index).logColorize('FgCyan'), name.logColorize('FgCyan'), path, isOn, status.logColorize(PACK_COLORS)], tableWidths));
               })
               console.log('\n');
             }).catch(error => {
@@ -193,7 +164,7 @@ program.on('--help', function () {
         (CMD_NAME + ' ' +
           (cmdGroupName + '-' +
             subcommandName).logColorize(['FgGreen']) + ' ' +
-          (args || '')).fixedLength(60)} ${description.logColorize('FgMagenta')}`);
+          (args || '')).fixedLength(60)} ${description.logColorize('FgGrey')}`);
     });
     console.log('');
     console.log('');
