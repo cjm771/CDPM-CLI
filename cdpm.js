@@ -68,7 +68,17 @@ const commands = {
       'py-unpack': {
         args: '<file>',
         longName: 'unpack-python-nodes',
-        description: 'Unpacks all python nodes'
+        description: 'Unpacks all python nodes',
+        flags: [
+          // note, add an args: '[something]' to a flag to accept args
+          {shortName: 'r', longName: 'relative', description: 'Unpack relatively instead of trying to unpack to destination script path'},
+          {shortName: 'd', longName: 'script-path-dont-update', description: 'Don\'t update script_path after unpacking'}
+        ],
+        routine: function (file, flags) {
+          return pyDynUtils.getDynPyNodeStatus(file).then((pythonNodes) => {
+            console.log(file, flags);
+          });
+        }
       },
       'py-pack': {
         args: '<file>',
@@ -79,7 +89,7 @@ const commands = {
         args: '<file> <nodeId>',
         longName: 'find-node-by-id',
         description: 'Find node by node id. ex: `9d5edce5bbad41ff96a0dca1b9bdd8de`',
-        routine: function (file, nodeId, flags) {
+        routine: function (file, flags) {
           return dynReader.load(file)
             .then(() => {
               // grab nodes
@@ -98,7 +108,7 @@ const commands = {
         args: '<file> <nodeType>',
         longName: 'find-node-by-type',
         description: 'Find node by type. ex: `PythonScriptNode`',
-        routine: function (file, nodeType, flags) {
+        routine: function (file, flags) {
           return dynReader.load(file)
             .then(() => {
               // grab nodes
@@ -125,17 +135,40 @@ program
 Object.keys(commands).forEach(cmdGroupName => {
   const cmdGroupObj = commands[cmdGroupName];
   Object.keys(cmdGroupObj.subCommands).forEach(subcommandName => {
-    const { args, longName, description, routine } = cmdGroupObj.subCommands[subcommandName];
-    program
+    const { args, longName, description, routine, flags } = cmdGroupObj.subCommands[subcommandName];
+    // basic stuff
+    const command = program
       .command(`${cmdGroupName}-${subcommandName} ${args}`)
       .description(description)
-      .action(function () {
+      .action(function (dir, command) {
+        debugger;
         if (routine) {
-          routine.apply(null, [...arguments]);
+          const flags = {};
+          command.options.forEach((option) => {
+            option = Object.assign({short: '', long: ''}, option);
+            const shortKey =option.short.replace(/-/g, '').toUpperCase();
+            const longKey = option.long.replace(/--/g,'').replace(/-([a-zA-Z])/g, function(v,m) { return m.toUpperCase(); });
+            const trueKey = shortKey.toLowerCase();
+            flags[trueKey] = option.bool;
+            [shortKey, longKey].forEach((key) => {
+              if (command[key] !== undefined) {
+                flags[trueKey] = command[key];
+              }
+            })
+          });
+          routine.apply(null, [dir, flags]);
         } else {
           console.log(`Unfortunately ${longName} isn't implemented yet!`);
         }
       });
+    // flags
+    if (flags) {
+      flags.forEach(({shortName, longName, description, args}) => {
+        debugger;
+        command
+          .option(`-${shortName} --${longName}${(args) ? ` ${args}` : ''}`, description);
+      });
+    }
   });
 });
 

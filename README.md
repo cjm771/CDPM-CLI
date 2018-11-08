@@ -88,6 +88,8 @@ Below is road map of other features planned
         - 'dyn visualize'
         - 'dyn py-pack [file]' - packs a node up with its source files
         - 'dyn-py-unpack [file]' - unpack a node into its source files
+            - '-r' - unpack relatively instead of trying to unpack to destination script path
+            - '-d' - don't update script_path after unpacking
 
     repo specific
     --------------
